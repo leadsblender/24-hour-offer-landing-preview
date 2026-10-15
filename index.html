@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#152a27">
+  <title>The 24-Hour First Fix — Your Brand</title>
+  <meta name="description" content="A focused first result for one problem, delivered within 24 hours of receiving what we need.">
+  <style>
+    /* BRAND TOKENS — replace these with your actual brand palette and fonts. */
+    :root { --ink:#152a27; --muted:#53615d; --paper:#f6f3eb; --surface:#fffdf8; --line:#d8dcd3; --accent:#c66c47; --accent-ink:#fffaf3; --serif:Georgia,'Times New Roman',serif; --sans:'Avenir Next',Avenir,'Segoe UI',sans-serif; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans); -webkit-font-smoothing:antialiased; }
+    a { color:inherit; }
+    button,input { font:inherit; }
+    .wrap { width:min(1160px,calc(100% - 48px)); margin-inline:auto; }
+    .draft { background:#ebdfbd; color:#3d3223; text-align:center; padding:8px 18px; font-size:12px; letter-spacing:.02em; }
+    .site-header { display:flex; align-items:center; justify-content:space-between; padding:25px 0; gap:20px; }
+    .wordmark { font-size:19px; font-weight:800; letter-spacing:-.06em; text-decoration:none; white-space:nowrap; }
+    .header-note { font-size:12px; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); }
+    .header-link { font-size:13px; font-weight:700; text-decoration:none; border-bottom:1px solid currentColor; padding-bottom:3px; }
+    .hero { padding:80px 0 94px; position:relative; overflow:hidden; background:var(--ink); color:var(--surface); }
+    .hero:before { content:""; position:absolute; width:550px; height:550px; border:1px solid #ffffff21; border-radius:50%; right:-130px; top:5%; box-shadow:0 0 0 85px #ffffff08,0 0 0 170px #ffffff06; pointer-events:none; }
+    .hero-grid { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr); gap:8%; align-items:center; position:relative; }
+    .eyebrow { display:flex; align-items:center; gap:11px; font-size:12px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:#e7aa89; }
+    .eyebrow:before { content:""; width:23px; height:1px; background:currentColor; }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { max-width:760px; margin:26px 0 24px; font:normal clamp(52px,6.8vw,99px)/.99 var(--serif); letter-spacing:-.058em; text-wrap:balance; }
+    h1 em { color:#e7aa89; font-weight:normal; }
+    .hero-copy { max-width:610px; color:#d4dfda; font-size:18px; line-height:1.67; }
+    .hero-copy strong { color:#fff; }
+    .hero-actions { display:flex; flex-wrap:wrap; align-items:center; gap:20px; margin-top:34px; }
+    .button { display:inline-flex; min-height:54px; align-items:center; justify-content:center; gap:22px; padding:15px 23px; border:0; background:var(--accent); color:var(--accent-ink); font-weight:800; font-size:14px; text-decoration:none; cursor:pointer; transition:transform .18s ease,background .18s ease; }
+    .button:hover { transform:translateY(-2px); background:#ab5535; }
+    .button:focus-visible,a:focus-visible,input:focus-visible { outline:3px solid #e7aa89; outline-offset:3px; }
+    .under-cta { color:#b9c9c2; font-size:12px; }
+    .hero-aside { border:1px solid #ffffff3b; padding:37px 33px; background:#ffffff0c; backdrop-filter:blur(3px); }
+    .aside-label { font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.18em; color:#e7aa89; }
+    .hero-aside h2 { font:normal 32px/1.12 var(--serif); letter-spacing:-.035em; margin:19px 0 29px; }
+    .aside-list { list-style:none; padding:0; margin:0; }
+    .aside-list li { display:flex; gap:15px; padding:16px 0; border-top:1px solid #ffffff30; font-size:14px; line-height:1.5; color:#e5ebe7; }
+    .aside-list b { color:#e7aa89; font-size:11px; letter-spacing:.08em; }
+    section { padding:96px 0; }
+    .section-kicker { color:#8c583c; font-size:11px; font-weight:800; letter-spacing:.2em; text-transform:uppercase; margin-bottom:22px; }
+    .section-title { font:normal clamp(39px,4.7vw,68px)/1.05 var(--serif); letter-spacing:-.05em; max-width:800px; margin-bottom:25px; text-wrap:balance; }
+    .intro { max-width:630px; color:var(--muted); font-size:17px; line-height:1.75; }
+    .process { display:grid; grid-template-columns:1fr 1fr 1fr; gap:30px; margin-top:65px; }
+    .step { border-top:1px solid var(--ink); padding-top:22px; }
+    .step-number { color:#a45d3e; font:normal 30px/1 var(--serif); }
+    .step h3 { font:normal 26px/1.16 var(--serif); margin:28px 0 12px; letter-spacing:-.025em; }
+    .step p { font-size:14px; line-height:1.7; color:var(--muted); max-width:290px; }
+    .proof { background:#e9ede5; padding:70px 0; }
+    .proof-inner { display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; }
+    .proof h2 { font:normal clamp(36px,4vw,55px)/1.08 var(--serif); letter-spacing:-.045em; margin:0; }
+    .proof p { color:#43534b; line-height:1.75; font-size:15px; margin:0; }
+    .proof strong { display:block; color:var(--ink); margin-bottom:9px; }
+    .request { background:var(--surface); }
+    .request-grid { display:grid; grid-template-columns:1fr 1fr; gap:9%; align-items:start; }
+    .request .section-title { font-size:clamp(39px,4vw,61px); }
+    .request-copy { color:var(--muted); line-height:1.7; max-width:470px; }
+    .scope { font-size:13px; color:var(--muted); line-height:1.65; margin-top:28px; padding-left:19px; border-left:1px solid var(--accent); }
+    .form-box { border:1px solid var(--line); padding:35px; box-shadow:13px 13px 0 #e5e8df; }
+    .form-box h3 { font:normal 30px/1.16 var(--serif); letter-spacing:-.03em; margin-bottom:8px; }
+    .form-box>p { color:var(--muted); font-size:13px; line-height:1.6; margin-bottom:25px; }
+    label { display:block; font-size:12px; font-weight:800; margin:17px 0 7px; }
+    input { display:block; width:100%; height:50px; border:1px solid #bdc7be; padding:0 14px; background:#fff; color:var(--ink); border-radius:0; }
+    input::placeholder { color:#87928b; }
+    .form-box .button { width:100%; margin-top:23px; }
+    .privacy { margin:13px 0 0; font-size:11px; line-height:1.5; color:var(--muted); }
+    #form-status { margin-top:16px; font-size:13px; line-height:1.55; color:#8a361e; min-height:0; }
+    footer { padding:30px 0; border-top:1px solid var(--line); }
+    .footer-inner { display:flex; justify-content:space-between; gap:16px; color:var(--muted); font-size:12px; }
+    @media (max-width:800px) { .hero { padding:57px 0 69px; } .hero-grid,.request-grid,.proof-inner { grid-template-columns:1fr; gap:42px; } .hero-aside { max-width:540px; } .process { grid-template-columns:1fr; gap:30px; } .step h3 { margin-top:18px; } .proof { padding:65px 0; } .header-note { display:none; } }
+    @media (max-width:520px) { .wrap { width:min(100% - 32px,1160px); } .site-header { padding:18px 0; } .header-link { font-size:12px; } h1 { font-size:clamp(45px,11vw,60px); } .hero-copy { font-size:16px; } .hero-aside,.form-box { padding:25px; } section { padding:72px 0; } .footer-inner { flex-direction:column; } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .button { transition:none; } }
+  </style>
+</head>
+<body>
+  <div class="draft">DRAFT — Replace bracketed copy, brand tokens, proof and form destination before publishing.</div>
+  <header class="wrap site-header">
+    <a class="wordmark" href="#top" aria-label="Your Brand, back to top">YOUR BRAND<span aria-hidden="true">.</span></a>
+    <span class="header-note">One focused first result</span>
+    <a class="header-link" href="#request">Get started ↗</a>
+  </header>
+  <main id="top">
+    <div class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">A 24-hour first fix</div>
+          <h1>Don’t spend another week <em>stuck on this.</em></h1>
+          <p class="hero-copy">If <strong>[specific urgent problem]</strong> is holding you back, we’ll deliver <strong>[one concrete first result]</strong> within 24 hours of receiving <strong>[what you need from the client]</strong>. A useful next step, not another vague consultation.</p>
+          <div class="hero-actions"><a class="button" href="#request">Request the first fix <span aria-hidden="true">↗</span></a><span class="under-cta">Clear scope. Clear next step. No invented promises.</span></div>
+        </div>
+        <aside class="hero-aside" aria-label="What you receive">
+          <div class="aside-label">By this time tomorrow</div>
+          <h2>Know what’s wrong.<br>Have the first fix.</h2>
+          <ol class="aside-list">
+            <li><b>01</b><span>[Tangible deliverable: e.g. an audited page, repaired workflow, or prioritized action plan]</span></li>
+            <li><b>02</b><span>[The specific change or insight the client can use immediately]</span></li>
+            <li><b>03</b><span>[The next recommended step, if further work is needed]</span></li>
+          </ol>
+        </aside>
+      </div>
+    </div>
+    <section class="wrap" aria-labelledby="how-title">
+      <div class="section-kicker">Simple by design</div>
+      <h2 class="section-title" id="how-title">One problem. One first result. No drawn-out discovery process.</h2>
+      <p class="intro">The job of this page is to make the first step obvious. Replace the placeholders below with the exact process your team can actually fulfill.</p>
+      <div class="process">
+        <div class="step"><div class="step-number">01</div><h3>Tell us what’s happening.</h3><p>Send [the minimum input you need to assess the problem]. We’ll confirm if the 24-hour offer is a fit.</p></div>
+        <div class="step"><div class="step-number">02</div><h3>We get to work.</h3><p>Once we have everything required and confirm the start time, we tackle [the precise first task].</p></div>
+        <div class="step"><div class="step-number">03</div><h3>Get something usable.</h3><p>Within 24 hours of that start time, receive [the defined deliverable] and a clear recommendation for what follows.</p></div>
+      </div>
+    </section>
+    <div class="proof"><div class="wrap proof-inner"><h2>Proof should answer the doubt, not decorate the page.</h2><p><strong>[Insert one real example or client result here.]</strong> Show the problem before, what your team delivered first, and what changed. If you don’t yet have permission to share a result, use a truthful sample deliverable instead of a made-up testimonial.</p></div></div>
+    <section class="request" id="request" aria-labelledby="request-title"><div class="wrap request-grid"><div><div class="section-kicker">Take the first step</div><h2 class="section-title" id="request-title">Let’s solve the part we can solve <em>now.</em></h2><p class="request-copy">Tell us a little about [specific problem]. We’ll reply with the fit, the scope, and exactly when the 24-hour clock can begin.</p><p class="scope"><strong>Important:</strong> This offer covers [first deliverable], not [larger outcome]. The 24-hour window starts only after we confirm the request and receive the required materials.</p></div><div class="form-box"><h3>Request your first fix</h3><p>Just enough information to start a useful conversation.</p><form id="lead-form"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="Your name" required><label for="email">Work email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required><label for="problem">What needs fixing?</label><input id="problem" name="problem" placeholder="A sentence is enough" required><button class="button" type="submit">Request the 24-hour fix <span aria-hidden="true">↗</span></button><p class="privacy">No payment is taken here. Add your real privacy link and consent language before publishing.</p><div id="form-status" role="status" aria-live="polite"></div></form></div></div></section>
+  </main>
+  <footer><div class="wrap footer-inner"><span>© Your Brand · Landing page draft</span><span>Replace placeholders and connect the form before launch.</span></div></footer>
+  <script>
+    // Preview-safe: no lead data is sent or stored. Connect your own secure endpoint before publishing.
+    document.getElementById('lead-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      document.getElementById('form-status').textContent = 'This is a design preview. The form is not connected, so your information has not been submitted. Add your form endpoint before launch.';
+    });
+  </script>
+</body>
+</html>
